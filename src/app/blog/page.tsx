@@ -1,6 +1,11 @@
 import Image from "next/image";
 import Navbar from "../components/Navbar";
 import ContactFooter from "../components/ContactFooter";
+import { db } from "@/lib/db";
+import { blog } from "@/lib/schema";
+import { eq, desc } from "drizzle-orm";
+
+export const dynamic = "force-dynamic";
 
 const categories = [
   "All",
@@ -136,7 +141,8 @@ function AuthorRow({
   );
 }
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const posts = await db.select().from(blog).where(eq(blog.published, true)).orderBy(desc(blog.createdAt));
   const featured = posts[0];
   const sideTop = posts[1];
   const sideBottom = posts[2];
@@ -179,14 +185,19 @@ export default function BlogPage() {
           </div>
 
           {/* Featured / Bento layout */}
-          <div className="flex gap-[24px] w-full">
+          {featured && <div className="flex gap-[24px] w-full">
             {/* Left — Featured post */}
             <div className="flex flex-col gap-[16px] flex-1 min-w-0 cursor-pointer group">
-              <div className="bg-[#eee] rounded-[16px] w-full h-[320px] overflow-hidden shrink-0" />
+              <div className="bg-[#eee] rounded-[16px] w-full h-[320px] overflow-hidden shrink-0">
+                {featured.coverImage && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={featured.coverImage} alt="" className="w-full h-full object-cover" />
+                )}
+              </div>
               <AuthorRow
-                author={featured.author}
-                date={featured.date}
-                category={featured.category}
+                author={featured.author || "Thrihash"}
+                date={featured.createdAt ? new Date(featured.createdAt).toLocaleDateString() : ""}
+                category={featured.category || ""}
               />
               <h2 className="font-[family-name:var(--font-geist)] font-semibold text-[22px] text-black tracking-[-0.44px] leading-[28px] group-hover:text-primary transition-colors">
                 {featured.title}
@@ -199,13 +210,18 @@ export default function BlogPage() {
             {/* Right — Two stacked posts */}
             <div className="flex flex-col gap-[24px] flex-1 min-w-0">
               {/* Top right */}
-              <div className="flex gap-[16px] cursor-pointer group">
-                <div className="bg-[#eee] rounded-[16px] w-[240px] h-[160px] overflow-hidden shrink-0" />
+              {sideTop && <div className="flex gap-[16px] cursor-pointer group">
+                <div className="bg-[#eee] rounded-[16px] w-[240px] h-[160px] overflow-hidden shrink-0">
+                  {sideTop.coverImage && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={sideTop.coverImage} alt="" className="w-full h-full object-cover" />
+                  )}
+                </div>
                 <div className="flex flex-col gap-[8px] flex-1 min-w-0">
                   <AuthorRow
-                    author={sideTop.author}
-                    date={sideTop.date}
-                    category={sideTop.category}
+                    author={sideTop.author || "Thrihash"}
+                    date={sideTop.createdAt ? new Date(sideTop.createdAt).toLocaleDateString() : ""}
+                    category={sideTop.category || ""}
                   />
                   <h3 className="font-[family-name:var(--font-geist)] font-semibold text-[17px] text-black tracking-[-0.34px] leading-[22px] group-hover:text-primary transition-colors">
                     {sideTop.title}
@@ -214,15 +230,20 @@ export default function BlogPage() {
                     {sideTop.excerpt}
                   </p>
                 </div>
-              </div>
+              </div>}
               {/* Bottom right */}
-              <div className="flex gap-[16px] cursor-pointer group">
-                <div className="bg-[#eee] rounded-[16px] w-[240px] h-[160px] overflow-hidden shrink-0" />
+              {sideBottom && <div className="flex gap-[16px] cursor-pointer group">
+                <div className="bg-[#eee] rounded-[16px] w-[240px] h-[160px] overflow-hidden shrink-0">
+                  {sideBottom.coverImage && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={sideBottom.coverImage} alt="" className="w-full h-full object-cover" />
+                  )}
+                </div>
                 <div className="flex flex-col gap-[8px] flex-1 min-w-0">
                   <AuthorRow
-                    author={sideBottom.author}
-                    date={sideBottom.date}
-                    category={sideBottom.category}
+                    author={sideBottom.author || "Thrihash"}
+                    date={sideBottom.createdAt ? new Date(sideBottom.createdAt).toLocaleDateString() : ""}
+                    category={sideBottom.category || ""}
                   />
                   <h3 className="font-[family-name:var(--font-geist)] font-semibold text-[17px] text-black tracking-[-0.34px] leading-[22px] group-hover:text-primary transition-colors">
                     {sideBottom.title}
@@ -231,9 +252,9 @@ export default function BlogPage() {
                     {sideBottom.excerpt}
                   </p>
                 </div>
-              </div>
+              </div>}
             </div>
-          </div>
+          </div>}
 
           {/* Grid — 3 columns */}
           <div className="grid grid-cols-3 gap-[24px] w-full">
@@ -242,11 +263,16 @@ export default function BlogPage() {
                 key={post.id}
                 className="flex flex-col gap-[16px] cursor-pointer group"
               >
-                <div className="bg-[#eee] rounded-[16px] w-full h-[220px] overflow-hidden" />
+                <div className="bg-[#eee] rounded-[16px] w-full h-[220px] overflow-hidden">
+                  {post.coverImage && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={post.coverImage} alt="" className="w-full h-full object-cover" />
+                  )}
+                </div>
                 <AuthorRow
-                  author={post.author}
-                  date={post.date}
-                  category={post.category}
+                  author={post.author || "Thrihash"}
+                  date={post.createdAt ? new Date(post.createdAt).toLocaleDateString() : ""}
+                  category={post.category || ""}
                 />
                 <h3 className="font-[family-name:var(--font-geist)] font-semibold text-[17px] text-black tracking-[-0.34px] leading-[22px] group-hover:text-primary transition-colors">
                   {post.title}

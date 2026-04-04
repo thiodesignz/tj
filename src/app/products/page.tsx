@@ -2,8 +2,14 @@ import Image from "next/image";
 import Navbar from "../components/Navbar";
 import TestimonialsSection from "../components/TestimonialsSection";
 import ContactFooter from "../components/ContactFooter";
+import { db } from "@/lib/db";
+import { products } from "@/lib/schema";
 
-export default function ProductsPage() {
+export const dynamic = "force-dynamic";
+
+export default async function ProductsPage() {
+  const items = await db.select().from(products).orderBy(products.order);
+
   return (
     <div className="bg-white flex flex-col items-center w-full">
       <Navbar active="Products" />
@@ -25,12 +31,23 @@ export default function ProductsPage() {
           </div>
 
           <div className="grid grid-cols-2 gap-[12px] w-full">
-            {products.map((product) => (
-              <div
+            {items.map((product) => (
+              <a
                 key={product.id}
-                className="bg-[#eee] flex h-[581px] items-end overflow-hidden p-[4px] rounded-[36px]"
+                href={product.liveUrl || "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#eee] flex h-[581px] items-end overflow-hidden p-[4px] rounded-[36px] relative group"
               >
-                <div className="bg-white flex flex-1 items-center justify-between px-[20px] py-[24px] rounded-[32px]">
+                {product.image && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                )}
+                <div className="bg-white flex flex-1 items-center justify-between px-[20px] py-[24px] rounded-[32px] relative z-10">
                   <span className="font-[family-name:var(--font-geist)] text-[16px] text-black tracking-[-0.32px]">
                     View Live
                   </span>
@@ -41,7 +58,7 @@ export default function ProductsPage() {
                     height={24}
                   />
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
@@ -52,12 +69,3 @@ export default function ProductsPage() {
     </div>
   );
 }
-
-const products = [
-  { id: 1 },
-  { id: 2 },
-  { id: 3 },
-  { id: 4 },
-  { id: 5 },
-  { id: 6 },
-];

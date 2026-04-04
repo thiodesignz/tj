@@ -2,14 +2,18 @@ import Image from "next/image";
 import Navbar from "../components/Navbar";
 import TestimonialsSection from "../components/TestimonialsSection";
 import ContactFooter from "../components/ContactFooter";
+import { db } from "@/lib/db";
+import { templates } from "@/lib/schema";
 
-export default function TemplatesPage() {
+export const dynamic = "force-dynamic";
+
+export default async function TemplatesPage() {
+  const items = await db.select().from(templates).orderBy(templates.order);
+
   return (
     <div className="bg-white flex flex-col items-center w-full">
-      {/* ── Navigation ── */}
       <Navbar active="Templates" />
 
-      {/* ── Hero Section ── */}
       <section className="flex flex-col items-center w-full">
         <div className="flex flex-col gap-[96px] items-start max-w-[1280px] w-full py-[120px]">
           <div className="flex flex-col gap-[24px] items-start">
@@ -26,17 +30,26 @@ export default function TemplatesPage() {
             </h1>
           </div>
 
-          {/* Template cards grid — 2 columns, 3 rows */}
           <div className="grid grid-cols-2 gap-[12px] w-full">
-            {templates.map((template) => (
-              <div
+            {items.map((template) => (
+              <a
                 key={template.id}
-                className="bg-[#eee] flex flex-col h-[581px] overflow-hidden rounded-[36px]"
+                href={template.previewUrl || "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#eee] flex flex-col h-[581px] overflow-hidden rounded-[36px] group"
               >
-                {/* Template preview area */}
-                <div className="flex-1 relative" />
-                {/* Bottom bar */}
-                <div className="p-[4px] pb-[4px]">
+                <div className="flex-1 relative overflow-hidden">
+                  {template.image && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={template.image}
+                      alt={template.name}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
+                </div>
+                <div className="p-[4px]">
                   <div className="bg-white flex items-center justify-between px-[20px] py-[24px] rounded-[32px]">
                     <div className="flex flex-col">
                       <span className="font-[family-name:var(--font-geist)] font-semibold text-[16px] text-black tracking-[-0.32px]">
@@ -59,26 +72,14 @@ export default function TemplatesPage() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Testimonials Section ── */}
       <TestimonialsSection />
-
-      {/* ── Contact & Footer ── */}
       <ContactFooter />
     </div>
   );
 }
-
-const templates = [
-  { id: 1, name: "SaaS Landing", category: "Landing Page" },
-  { id: 2, name: "Portfolio Pro", category: "Portfolio" },
-  { id: 3, name: "Agency starter", category: "Agency" },
-  { id: 4, name: "Blog starter", category: "Blog" },
-  { id: 5, name: "E-commerce starter", category: "E-commerce" },
-  { id: 6, name: "Dashboard UI", category: "Dashboard" },
-];

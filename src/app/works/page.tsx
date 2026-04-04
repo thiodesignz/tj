@@ -2,14 +2,18 @@ import Image from "next/image";
 import Navbar from "../components/Navbar";
 import TestimonialsSection from "../components/TestimonialsSection";
 import ContactFooter from "../components/ContactFooter";
+import { db } from "@/lib/db";
+import { works } from "@/lib/schema";
 
-export default function WorksPage() {
+export const dynamic = "force-dynamic";
+
+export default async function WorksPage() {
+  const items = await db.select().from(works).orderBy(works.order);
+
   return (
     <div className="bg-white flex flex-col items-center w-full">
-      {/* ── Navigation ── */}
       <Navbar active="Works" />
 
-      {/* ── Hero Section ── */}
       <section className="flex flex-col items-center w-full">
         <div className="flex flex-col gap-[96px] items-start max-w-[1280px] w-full py-[120px]">
           <div className="flex flex-col gap-[24px] items-start">
@@ -26,14 +30,24 @@ export default function WorksPage() {
             </h1>
           </div>
 
-          {/* Project cards grid — 2 columns, 3 rows */}
           <div className="grid grid-cols-2 gap-[12px] w-full">
-            {[1, 2, 3, 4, 5, 6].map((project) => (
-              <div
-                key={project}
-                className="bg-[#eee] flex h-[581px] items-end overflow-hidden p-[4px] rounded-[36px]"
+            {items.map((work) => (
+              <a
+                key={work.id}
+                href={work.link || "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#eee] flex h-[581px] items-end overflow-hidden p-[4px] rounded-[36px] relative group"
               >
-                <div className="bg-white flex flex-1 items-center justify-between px-[20px] py-[24px] rounded-[44px]">
+                {work.image && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={work.image}
+                    alt={work.title}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                )}
+                <div className="bg-white flex flex-1 items-center justify-between px-[20px] py-[24px] rounded-[44px] relative z-10">
                   <span className="font-[family-name:var(--font-geist)] text-[16px] text-black tracking-[-0.32px]">
                     View Casestudy
                   </span>
@@ -44,16 +58,13 @@ export default function WorksPage() {
                     height={24}
                   />
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Testimonials Section ── */}
       <TestimonialsSection />
-
-      {/* ── Contact & Footer ── */}
       <ContactFooter />
     </div>
   );
