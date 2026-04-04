@@ -53,9 +53,11 @@ export default function CrudPanel({ title, endpoint, fields }: CrudPanelProps) {
     try {
       const fd = new FormData();
       fd.append("file", imageFile);
-      const res = await fetch("/api/upload", { method: "POST", body: fd });
+      const res = await fetch("/api/upload", { method: "POST", body: fd, credentials: "include" });
       if (!res.ok) {
-        console.error("Upload failed:", res.status);
+        const errData = await res.json().catch(() => ({}));
+        console.error("Upload failed:", res.status, errData);
+        alert(`Image upload failed: ${errData.error || res.status}`);
         return null;
       }
       const data = await res.json();
