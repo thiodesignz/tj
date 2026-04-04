@@ -36,6 +36,14 @@ yarn-error.log*
 # vercel
 .vercel
 
+# pocketbase
+/pocketbase/pocketbase
+/pocketbase/pb_data/
+/pocketbase/pb_migrations/
+
+# portrait source
+/portrait/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

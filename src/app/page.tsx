@@ -1,65 +1,263 @@
 import Image from "next/image";
+import Navbar from "./components/Navbar";
+import TransitionLink from "./components/TransitionLink";
+import AvailabilityBadge from "./components/AvailabilityBadge";
+import HeroCarousel from "./components/HeroCarousel";
+import TestimonialsSection from "./components/TestimonialsSection";
+import ContactFooter from "./components/ContactFooter";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
+    <div className="bg-white flex flex-col items-center w-full">
+      {/* ── Navigation ── */}
+      <Navbar />
+
+      {/* ── Hero Section ── */}
+      <section className="flex flex-col items-center w-full overflow-hidden">
+        <div className="flex flex-col items-start max-w-[1280px] w-full pt-[120px]">
+          <div className="flex flex-col gap-[24px] items-start max-w-[1106px]">
+            {/* Availability badge */}
+            <AvailabilityBadge />
+            {/* Heading */}
+            <h1 className="font-[family-name:var(--font-instrument-serif)] text-[96px] text-black tracking-[-1.92px] leading-[99px] max-w-[1023px]">
+              AI design engineer partner with focus on{" "}
+              <em className="italic text-primary">design experiences</em>
+            </h1>
+            {/* CTA */}
             <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              href="#works"
+              className="bg-primary text-white font-[family-name:var(--font-geist)] text-[16px] tracking-[-0.32px] px-[20px] py-[12px] rounded-[44px] hover:opacity-90 transition-opacity"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              See my projects
+            </a>
+          </div>
+        </div>
+        {/* Auto-scroll carousel - full width, no clip */}
+        <HeroCarousel />
+      </section>
+
+      {/* ── About Section ── */}
+      <section className="flex flex-col items-center w-full">
+        <div className="flex flex-col gap-[96px] items-start max-w-[1280px] w-full py-[120px]">
+          <div className="flex flex-col gap-[24px] items-start">
+            {/* Badge */}
+            <div className="bg-white border border-[#eaecee] flex gap-[8px] h-[45px] items-center overflow-hidden pl-[12px] pr-[20px] py-[12px] rounded-[32px]">
+              <div className="bg-primary rounded-full w-[16px] h-[16px]" />
+              <span className="font-[family-name:var(--font-geist)] text-[16px] text-black tracking-[-0.32px] whitespace-nowrap">
+                Hello I am Thrihash
+              </span>
+            </div>
+            {/* Heading */}
+            <h2 className="font-[family-name:var(--font-instrument-serif)] text-[96px] text-black tracking-[-1.92px] leading-[99px] max-w-[955px]">
+              I help{" "}
+              <em className="italic text-primary">
+                Startups, Business &amp; Brands
+              </em>{" "}
+              to build a strong online presence so that people remember them.
+            </h2>
+          </div>
+          {/* Brand logos marquee */}
+          <div className="h-[32px] overflow-hidden w-full relative">
+            <div className="flex gap-[64px] items-center opacity-40 animate-marquee whitespace-nowrap">
+              {[
+                "AGENCY",
+                "STUDIO.io",
+                "Create+",
+                "DESIGNLAB",
+                "ARTISTIC",
+                "PIXELPERFECT",
+                "Visuals",
+                "MINDSCAPE",
+                "AGENCY",
+                "STUDIO.io",
+                "Create+",
+                "DESIGNLAB",
+                "ARTISTIC",
+                "PIXELPERFECT",
+                "Visuals",
+                "MINDSCAPE",
+              ].map((brand, i) => (
+                <span
+                  key={i}
+                  className="font-[family-name:var(--font-inter)] font-bold text-[#171717] text-[24px] leading-[32px] shrink-0"
+                >
+                  {brand}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Services Section ── */}
+      <section className="bg-primary flex flex-col items-center w-full">
+        <div className="flex flex-col gap-[96px] items-start max-w-[1280px] w-full py-[120px]">
+          <h2 className="font-[family-name:var(--font-instrument-serif)] text-[96px] text-white tracking-[-1.92px] leading-[99px] max-w-[955px]">
+            What Services i do !
+          </h2>
+          {/* Services grid */}
+          <div className="flex gap-[12px] h-[720px] items-center w-full">
+            {/* Left column */}
+            <div className="flex flex-col gap-[12px] flex-1 h-full min-w-0">
+              <ServiceCard title="Branding/Logo design" />
+              <ServiceCard title="Visual & Promotional Design" />
+            </div>
+            {/* Right column */}
+            <div className="flex flex-col gap-[12px] flex-1 h-full min-w-0">
+              {/* Top row: Framer + AI */}
+              <div className="flex gap-[12px] flex-1 min-h-0">
+                <div className="bg-white flex flex-1 items-center justify-center overflow-hidden p-[32px] rounded-[20px] min-w-0">
+                  <div className="flex flex-col gap-[24px] items-center">
+                    <Image
+                      src="/assets/slack.svg"
+                      alt="Framer"
+                      width={38}
+                      height={38}
+                    />
+                    <p className="font-[family-name:var(--font-geist)] font-semibold text-[20px] text-black tracking-[-0.4px] text-center">
+                      Framer
+                      <br />
+                      Development
+                    </p>
+                  </div>
+                </div>
+                <div className="bg-white flex flex-1 items-center justify-center overflow-hidden p-[32px] rounded-[20px] min-w-0">
+                  <div className="flex flex-col gap-[24px] items-center">
+                    <Image
+                      src="/assets/slack.svg"
+                      alt="AI"
+                      width={38}
+                      height={38}
+                    />
+                    <p className="font-[family-name:var(--font-geist)] font-semibold text-[20px] text-black tracking-[-0.4px] text-center">
+                      AI &amp;
+                      <br />
+                      Automations
+                    </p>
+                  </div>
+                </div>
+              </div>
+              {/* Product design card */}
+              <div className="bg-white flex flex-col items-start overflow-hidden rounded-[20px] shrink-0">
+                <div className="h-[162px] overflow-hidden relative w-full">
+                  <div className="absolute top-1/2 -translate-y-1/2 left-[-48px] flex gap-[6px] items-center">
+                    {[
+                      { src: "/assets/figma.svg", alt: "Figma" },
+                      { src: "/assets/notion-bg.svg", alt: "Notion" },
+                      { src: "/assets/meet.svg", alt: "Meet" },
+                      { src: "/assets/slack.svg", alt: "Slack" },
+                      { src: "/assets/messengers.svg", alt: "Teams" },
+                      { src: "/assets/slack.svg", alt: "Slack 2" },
+                      { src: "/assets/notion-bg.svg", alt: "Notion 2" },
+                      { src: "/assets/meet.svg", alt: "Meet 2" },
+                    ].map((tool, i) => (
+                      <div
+                        key={i}
+                        className="bg-[#e5e5e5] flex items-center overflow-hidden px-[21px] py-[19px] rounded-[25px] shrink-0"
+                      >
+                        <Image
+                          src={tool.src}
+                          alt={tool.alt}
+                          width={38}
+                          height={38}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="flex flex-col items-start pb-[32px] px-[32px] w-full">
+                  <p className="font-[family-name:var(--font-geist)] font-semibold text-[20px] text-black tracking-[-0.4px] text-center w-full">
+                    Product design
+                  </p>
+                </div>
+              </div>
+              {/* UI/UX card */}
+              <ServiceCard title="UI/UX design" height={280} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Projects Section ── */}
+      <section id="works" className="flex flex-col items-center w-full">
+        <div className="flex flex-col gap-[96px] items-start max-w-[1280px] w-full py-[120px]">
+          <div className="flex flex-col gap-[24px] items-start">
+            <div className="bg-white border border-[#eaecee] flex gap-[8px] h-[45px] items-center overflow-hidden pl-[12px] pr-[20px] py-[12px] rounded-[32px]">
+              <div className="bg-primary rounded-full w-[16px] h-[16px]" />
+              <span className="font-[family-name:var(--font-geist)] text-[16px] text-black tracking-[-0.32px] whitespace-nowrap">
+                See my works
+              </span>
+            </div>
+            <h2 className="font-[family-name:var(--font-instrument-serif)] text-[96px] text-black tracking-[-1.92px] leading-[99px] max-w-[872px]">
+              Some of <em className="italic text-primary">my projects</em> build
+              for my clients
+            </h2>
+            <TransitionLink
+              href="/works"
+              className="bg-primary text-white font-[family-name:var(--font-geist)] text-[16px] tracking-[-0.32px] px-[20px] py-[12px] rounded-[44px] hover:opacity-90 transition-opacity"
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              View all my projects
+            </TransitionLink>
+          </div>
+          {/* Project cards grid */}
+          <div className="grid grid-cols-2 gap-[12px] w-full">
+            {[1, 2, 3, 4].map((project) => (
+              <div
+                key={project}
+                className="bg-[#eee] flex h-[581px] items-end overflow-hidden p-[4px] rounded-[36px]"
+              >
+                <div className="bg-white flex flex-1 items-center justify-between px-[20px] py-[24px] rounded-[44px]">
+                  <span className="font-[family-name:var(--font-geist)] text-[16px] text-black tracking-[-0.32px]">
+                    View Casestudy
+                  </span>
+                  <Image
+                    src="/assets/arrow-right.svg"
+                    alt="Arrow"
+                    width={24}
+                    height={24}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </section>
+
+      {/* ── Testimonials Section ── */}
+      <TestimonialsSection />
+
+      {/* ── Contact & Footer ── */}
+      <ContactFooter />
     </div>
   );
 }
+
+/* ── Service Card Component ── */
+function ServiceCard({
+  title,
+  height,
+}: {
+  title: string;
+  height?: number;
+}) {
+  return (
+    <div
+      className="bg-white flex flex-col flex-1 items-start overflow-hidden rounded-[20px] min-h-0"
+      style={height ? { height, flex: "none" } : undefined}
+    >
+      <div className="bg-[#eaeaea] flex-1 overflow-hidden relative w-full min-h-0">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-[4px] opacity-30">
+          <div className="w-[32px] h-[32px] rounded-full border-2 border-[#c0c0c0]" />
+          <div className="w-[36px] h-[31px] border-l-2 border-b-2 border-[#c0c0c0]" />
+          <div className="w-[31px] h-[31px] bg-[#d2d2d2]" />
+        </div>
+      </div>
+      <div className="flex flex-col items-start p-[32px] w-full">
+        <p className="font-[family-name:var(--font-geist)] font-semibold text-[20px] text-black tracking-[-0.4px] text-center w-full">
+          {title}
+        </p>
+      </div>
+    </div>
+  );
+}
+
