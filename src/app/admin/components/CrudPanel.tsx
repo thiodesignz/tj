@@ -62,15 +62,34 @@ export default function CrudPanel({ title, endpoint, fields }: CrudPanelProps) {
     setLoading(true);
 
     let imageUrl = await uploadImage();
-    const body = { ...form };
+
+    // Clean form data: remove empty strings, convert numbers
+    const body: Record<string, unknown> = {};
+    for (const field of fields) {
+      const val = form[field.name];
+      if (field.type === "number") {
+        body[field.name] = val === "" || val === undefined ? 0 : Number(val);
+      } else if (field.type === "checkbox") {
+        body[field.name] = !!val;
+      } else if (val !== "" && val !== undefined) {
+        body[field.name] = val;
+      }
+    }
     if (imageUrl) body.image = imageUrl;
     if (editing) body.id = editing.id;
 
-    await fetch(endpoint, {
+    const res = await fetch(endpoint, {
       method: editing ? "PUT" : "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     });
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      alert(`Error: ${err.error || "Failed to save"}`);
+      setLoading(false);
+      return;
+    }
 
     setForm({});
     setEditing(null);
