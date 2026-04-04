@@ -3,17 +3,22 @@ import { auth } from "@/lib/auth";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
-  const session = await auth();
-  if (!session) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+  try {
+    const session = await auth();
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
 
-  const formData = await request.formData();
-  const file = formData.get("file") as File;
-  if (!file) {
-    return NextResponse.json({ error: "No file provided" }, { status: 400 });
-  }
+    const formData = await request.formData();
+    const file = formData.get("file") as File;
+    if (!file) {
+      return NextResponse.json({ error: "No file provided" }, { status: 400 });
+    }
 
-  const blob = await put(file.name, file, { access: "public" });
-  return NextResponse.json({ url: blob.url });
+    const blob = await put(file.name, file, { access: "public" });
+    return NextResponse.json({ url: blob.url });
+  } catch (e: unknown) {
+    console.error("Upload error:", e);
+    return NextResponse.json({ error: String(e) }, { status: 500 });
+  }
 }
