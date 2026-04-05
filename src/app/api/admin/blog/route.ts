@@ -13,11 +13,24 @@ export async function GET() {
   }
 }
 
+function toSlug(text: string): string {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
+}
+
 export async function POST(req: Request) {
   const session = await auth();
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   try {
     const body = await req.json();
+    // Auto-generate slug from title if slug is empty or has spaces
+    if (!body.slug || body.slug.includes(" ")) {
+      body.slug = toSlug(body.slug || body.title || "post");
+    }
     const [item] = await db.insert(blog).values(body).returning();
     return NextResponse.json(item);
   } catch (e: unknown) {
