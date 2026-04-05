@@ -47,10 +47,15 @@ export default async function WorksPage() {
                     className="absolute inset-0 w-full h-full object-cover"
                   />
                 )}
-                <div className="theme-bg-card-inner flex flex-1 items-center justify-between px-[20px] py-[24px] rounded-[44px] relative z-10">
-                  <span className="font-[family-name:var(--font-geist)] text-[16px] theme-text tracking-[-0.32px]">
-                    View Casestudy
-                  </span>
+                <div className="theme-bg-card-inner flex flex-1 items-center justify-between px-[20px] py-[24px] rounded-[32px] relative z-10">
+                  <div className="flex flex-col">
+                    <span className="font-[family-name:var(--font-geist)] font-semibold text-[16px] theme-text tracking-[-0.32px]">
+                      {work.title}
+                    </span>
+                    <span className="font-[family-name:var(--font-geist)] text-[14px] theme-text-muted tracking-[-0.28px]">
+                      View Casestudy
+                    </span>
+                  </div>
                   <Image
                     src="/assets/arrow-right.svg"
                     alt="Arrow"
