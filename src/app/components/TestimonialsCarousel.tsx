@@ -81,7 +81,7 @@ export default function TestimonialsCarousel({
             <p className="font-[family-name:var(--font-geist)] text-[14px] md:text-[15px] lg:text-[16px] theme-text-secondary tracking-[-0.32px] leading-normal">
               {t.quote}
             </p>
-            <div className="flex gap-[12px] items-center">
+            {/* <div className="flex gap-[12px] items-center">
               <Image
                 src={t.avatar}
                 alt={t.name}
@@ -97,7 +97,7 @@ export default function TestimonialsCarousel({
                   {t.role}
                 </span>
               </div>
-            </div>
+            </div> */}
           </div>
         ))}
       </div>
