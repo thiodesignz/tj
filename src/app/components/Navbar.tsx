@@ -104,7 +104,7 @@ export default function Navbar({ active }: { active?: string }) {
       </div>
       {/* Mobile menu overlay */}
       {menuOpen && (
-        <div className="md:hidden absolute top-[80px] left-0 right-0 bg-white border-t border-[#eaecee] z-50 shadow-lg">
+        <div className="md:hidden absolute top-[80px] left-0 right-0 theme-bg border-t theme-border z-50 shadow-lg">
           <div className="flex flex-col px-[20px] py-[16px] gap-[4px]">
             {navLinks.map((link) => (
               <TransitionLink

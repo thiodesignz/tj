@@ -41,7 +41,7 @@ export default function Home() {
         <div className="flex flex-col gap-[48px] md:gap-[72px] lg:gap-[96px] items-start max-w-[1280px] w-full py-[60px] md:py-[80px] lg:py-[120px] px-[20px] lg:px-0">
           <div className="flex flex-col gap-[24px] items-start">
             {/* Badge */}
-            <div className="bg-white border theme-border flex gap-[8px] h-[45px] items-center overflow-hidden pl-[12px] pr-[20px] py-[12px] rounded-[32px]">
+            <div className="theme-bg border theme-border flex gap-[8px] h-[45px] items-center overflow-hidden pl-[12px] pr-[20px] py-[12px] rounded-[32px]">
               <div className="bg-primary rounded-full w-[16px] h-[16px]" />
               <span className="font-[family-name:var(--font-geist)] text-[16px] theme-text tracking-[-0.32px] whitespace-nowrap">
                 Hello I am Thrihash
@@ -79,7 +79,7 @@ export default function Home() {
               ].map((brand, i) => (
                 <span
                   key={i}
-                  className="font-[family-name:var(--font-inter)] font-bold text-[#171717] text-[24px] leading-[32px] shrink-0"
+                  className="font-[family-name:var(--font-inter)] font-bold theme-text text-[24px] leading-[32px] shrink-0"
                 >
                   {brand}
                 </span>
@@ -106,7 +106,7 @@ export default function Home() {
             <div className="flex flex-col gap-[12px] flex-1 w-full md:h-full min-w-0">
               {/* Top row: Framer + AI */}
               <div className="flex gap-[12px] flex-1 min-h-[160px] md:min-h-0">
-                <div className="bg-white flex flex-1 items-center justify-center overflow-hidden p-[24px] md:p-[32px] rounded-[20px] min-w-0">
+                <div className="theme-bg flex flex-1 items-center justify-center overflow-hidden p-[24px] md:p-[32px] rounded-[20px] min-w-0">
                   <div className="flex flex-col gap-[24px] items-center">
                     <Image
                       src="/assets/slack.svg"
@@ -121,7 +121,7 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
-                <div className="bg-white flex flex-1 items-center justify-center overflow-hidden p-[24px] md:p-[32px] rounded-[20px] min-w-0">
+                <div className="theme-bg flex flex-1 items-center justify-center overflow-hidden p-[24px] md:p-[32px] rounded-[20px] min-w-0">
                   <div className="flex flex-col gap-[24px] items-center">
                     <Image
                       src="/assets/slack.svg"
@@ -138,7 +138,7 @@ export default function Home() {
                 </div>
               </div>
               {/* Product design card */}
-              <div className="bg-white flex flex-col items-start overflow-hidden rounded-[20px] shrink-0">
+              <div className="theme-bg flex flex-col items-start overflow-hidden rounded-[20px] shrink-0">
                 <div className="h-[162px] overflow-hidden relative w-full">
                   <div className="absolute top-1/2 -translate-y-1/2 left-[-48px] flex gap-[6px] items-center">
                     {[
@@ -153,7 +153,7 @@ export default function Home() {
                     ].map((tool, i) => (
                       <div
                         key={i}
-                        className="bg-[#e5e5e5] flex items-center overflow-hidden px-[21px] py-[19px] rounded-[25px] shrink-0"
+                        className="theme-bg-card flex items-center overflow-hidden px-[21px] py-[19px] rounded-[25px] shrink-0"
                       >
                         <Image
                           src={tool.src}
@@ -182,7 +182,7 @@ export default function Home() {
       <section id="works" className="flex flex-col items-center w-full">
         <div className="flex flex-col gap-[48px] md:gap-[72px] lg:gap-[96px] items-start max-w-[1280px] w-full py-[60px] md:py-[80px] lg:py-[120px] px-[20px] lg:px-0">
           <div className="flex flex-col gap-[24px] items-start">
-            <div className="bg-white border theme-border flex gap-[8px] h-[45px] items-center overflow-hidden pl-[12px] pr-[20px] py-[12px] rounded-[32px]">
+            <div className="theme-bg border theme-border flex gap-[8px] h-[45px] items-center overflow-hidden pl-[12px] pr-[20px] py-[12px] rounded-[32px]">
               <div className="bg-primary rounded-full w-[16px] h-[16px]" />
               <span className="font-[family-name:var(--font-geist)] text-[16px] theme-text tracking-[-0.32px] whitespace-nowrap">
                 See my works
@@ -206,7 +206,7 @@ export default function Home() {
                 key={project}
                 className="theme-bg-card flex h-[350px] md:h-[450px] lg:h-[581px] items-end overflow-hidden p-[4px] rounded-[36px]"
               >
-                <div className="bg-white flex flex-1 items-center justify-between px-[20px] py-[24px] rounded-[44px]">
+                <div className="theme-bg flex flex-1 items-center justify-between px-[20px] py-[24px] rounded-[44px]">
                   <span className="font-[family-name:var(--font-geist)] text-[16px] theme-text tracking-[-0.32px]">
                     View Casestudy
                   </span>
@@ -242,10 +242,10 @@ function ServiceCard({
 }) {
   return (
     <div
-      className="bg-white flex flex-col flex-1 items-start overflow-hidden rounded-[20px] min-h-[200px] md:min-h-0"
+      className="theme-bg flex flex-col flex-1 items-start overflow-hidden rounded-[20px] min-h-[200px] md:min-h-0"
       style={height ? { height, flex: "none" } : undefined}
     >
-      <div className="bg-[#eaeaea] flex-1 overflow-hidden relative w-full min-h-0">
+      <div className="theme-bg-card flex-1 overflow-hidden relative w-full min-h-0">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-[4px] opacity-30">
           <div className="w-[32px] h-[32px] rounded-full border-2 border-[#c0c0c0]" />
           <div className="w-[36px] h-[31px] border-l-2 border-b-2 border-[#c0c0c0]" />
