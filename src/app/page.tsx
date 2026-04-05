@@ -5,8 +5,13 @@ import AvailabilityBadge from "./components/AvailabilityBadge";
 import HeroCarousel from "./components/HeroCarousel";
 import TestimonialsSection from "./components/TestimonialsSection";
 import ContactFooter from "./components/ContactFooter";
+import { db } from "@/lib/db";
+import { works } from "@/lib/schema";
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
+  const projects = await db.select().from(works).orderBy(works.order).limit(4);
   return (
     <div className="theme-bg flex flex-col items-center w-full">
       {/* ── Navigation ── */}
@@ -201,15 +206,31 @@ export default function Home() {
           </div>
           {/* Project cards grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[12px] w-full">
-            {[1, 2, 3, 4].map((project) => (
-              <div
-                key={project}
-                className="theme-bg-card flex h-[350px] md:h-[450px] lg:h-[581px] items-end overflow-hidden p-[4px] rounded-[36px]"
+            {projects.map((work) => (
+              <a
+                key={work.id}
+                href={work.link || "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="theme-bg-card flex h-[350px] md:h-[450px] lg:h-[581px] items-end overflow-hidden p-[4px] rounded-[36px] relative group"
               >
-                <div className="theme-bg flex flex-1 items-center justify-between px-[20px] py-[24px] rounded-[44px]">
-                  <span className="font-[family-name:var(--font-geist)] text-[16px] theme-text tracking-[-0.32px]">
-                    View Casestudy
-                  </span>
+                {work.image && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={work.image}
+                    alt={work.title}
+                    className="absolute inset-0 w-full h-full object-cover rounded-[36px]"
+                  />
+                )}
+                <div className="theme-bg-card-inner flex flex-1 items-center justify-between px-[20px] py-[24px] rounded-[32px] relative z-10">
+                  <div className="flex flex-col">
+                    <span className="font-[family-name:var(--font-geist)] font-semibold text-[16px] theme-text tracking-[-0.32px]">
+                      {work.title}
+                    </span>
+                    <span className="font-[family-name:var(--font-geist)] text-[14px] theme-text-muted tracking-[-0.28px]">
+                      View Casestudy
+                    </span>
+                  </div>
                   <Image
                     src="/assets/arrow-right.svg"
                     alt="Arrow"
@@ -217,7 +238,7 @@ export default function Home() {
                     height={24}
                   />
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
