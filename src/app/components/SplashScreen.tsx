@@ -37,11 +37,11 @@ export default function SplashScreen({
 
   return (
     <div
-      className={`fixed inset-0 z-50 bg-white flex items-center justify-center transition-opacity duration-700 ${
+      className={`fixed inset-0 z-50 theme-bg flex items-center justify-center transition-opacity duration-700 ${
         fadeOut ? "opacity-0" : "opacity-100"
       }`}
     >
-      <div className="bg-white border-[1.66px] border-[#eaecee] flex gap-[13px] items-center overflow-hidden pl-[20px] pr-[33px] py-[20px] rounded-[53px] animate-[scaleIn_0.6s_ease-out]">
+      <div className="theme-bg border-[1.66px] theme-border flex gap-[13px] items-center overflow-hidden pl-[20px] pr-[33px] py-[20px] rounded-[53px] animate-[scaleIn_0.6s_ease-out]">
         <div className="relative w-[53px] h-[53px] shrink-0">
           {/* Rotating blue stroke */}
           <div className="absolute inset-[-3px] rounded-full border-[2.5px] border-transparent border-t-primary border-r-primary animate-[spin_1s_linear_infinite]" />
@@ -54,7 +54,7 @@ export default function SplashScreen({
             />
           </div>
         </div>
-        <p className="font-[family-name:var(--font-geist)] text-[27px] text-black tracking-[-0.53px] whitespace-nowrap">
+        <p className="font-[family-name:var(--font-geist)] text-[27px] theme-text tracking-[-0.53px] whitespace-nowrap">
           Revelling<span className="inline-block w-[45px] text-left">{dots}</span>
         </p>
       </div>

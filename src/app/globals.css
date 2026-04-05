@@ -16,15 +16,64 @@
   --font-serif: "Instrument Serif", serif;
 }
 
+/* Light theme (default) */
+:root {
+  --bg: #ffffff;
+  --bg-secondary: #fafafa;
+  --bg-card: #eee;
+  --bg-card-inner: #ffffff;
+  --bg-service-card: #eaeaea;
+  --text: #000000;
+  --text-secondary: #5e5e5e;
+  --text-muted: #7c7c7c;
+  --text-faint: rgba(0, 0, 0, 0.4);
+  --border: #eaecee;
+  --border-light: #efefef;
+  --marquee-text: #171717;
+  --avatar-bg: #d1d1d1;
+  --tool-bg: #e5e5e5;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  --bg: #0a0a0a;
+  --bg-secondary: #141414;
+  --bg-card: #1a1a1a;
+  --bg-card-inner: #111111;
+  --bg-service-card: #1a1a1a;
+  --text: #ededed;
+  --text-secondary: #a0a0a0;
+  --text-muted: #888888;
+  --text-faint: rgba(255, 255, 255, 0.4);
+  --border: #2a2a2a;
+  --border-light: #222222;
+  --marquee-text: #ededed;
+  --avatar-bg: #333333;
+  --tool-bg: #222222;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background: var(--color-background);
-  color: var(--color-foreground);
+  background: var(--bg);
+  color: var(--text);
   font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* Theme-aware utilities */
+.theme-bg { background-color: var(--bg); }
+.theme-bg-secondary { background-color: var(--bg-secondary); }
+.theme-bg-card { background-color: var(--bg-card); }
+.theme-bg-card-inner { background-color: var(--bg-card-inner); }
+.theme-text { color: var(--text); }
+.theme-text-secondary { color: var(--text-secondary); }
+.theme-text-muted { color: var(--text-muted); }
+.theme-text-faint { color: var(--text-faint); }
+.theme-border { border-color: var(--border); }
+.theme-border-light { border-color: var(--border-light); }
 
 /* Marquee animation for brand logos */
 @keyframes marquee {

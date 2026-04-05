@@ -51,13 +51,13 @@ export default function TestimonialsSection() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between w-full gap-[24px] md:gap-0">
           <div className="flex flex-col gap-[24px] items-start">
-            <div className="bg-white border border-[#eaecee] flex gap-[8px] h-[45px] items-center overflow-hidden pl-[12px] pr-[20px] py-[12px] rounded-[32px]">
+            <div className="theme-bg border theme-border flex gap-[8px] h-[45px] items-center overflow-hidden pl-[12px] pr-[20px] py-[12px] rounded-[32px]">
               <div className="bg-primary rounded-full w-[16px] h-[16px]" />
-              <span className="font-[family-name:var(--font-geist)] text-[16px] text-black tracking-[-0.32px] whitespace-nowrap">
+              <span className="font-[family-name:var(--font-geist)] text-[16px] theme-text tracking-[-0.32px] whitespace-nowrap">
                 Testimonials
               </span>
             </div>
-            <h2 className="font-[family-name:var(--font-instrument-serif)] text-[48px] md:text-[64px] lg:text-[96px] text-black tracking-[-1.92px] leading-[52px] md:leading-[68px] lg:leading-[99px] max-w-[872px]">
+            <h2 className="font-[family-name:var(--font-instrument-serif)] text-[48px] md:text-[64px] lg:text-[96px] theme-text tracking-[-1.92px] leading-[52px] md:leading-[68px] lg:leading-[99px] max-w-[872px]">
               Words from my
               <br />
               lovely <em className="italic text-primary">clients</em>
@@ -65,10 +65,10 @@ export default function TestimonialsSection() {
           </div>
           <div className="flex flex-col gap-[12px] items-start md:items-end shrink-0">
             <div className="font-[family-name:var(--font-geist)] text-[16px] text-left md:text-right tracking-[-0.32px]">
-              <p className="text-black">Loved by those</p>
-              <p className="text-black/40">who value thoughtful designs</p>
+              <p className="theme-text">Loved by those</p>
+              <p className="theme-text-faint">who value thoughtful designs</p>
             </div>
-            <div className="border border-[#efefef] flex items-center p-[8px] rounded-full">
+            <div className="border theme-border-light flex items-center p-[8px] rounded-full">
               <div className="flex items-start pr-[10px]">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <div

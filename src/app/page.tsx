@@ -8,7 +8,7 @@ import ContactFooter from "./components/ContactFooter";
 
 export default function Home() {
   return (
-    <div className="bg-white flex flex-col items-center w-full">
+    <div className="theme-bg flex flex-col items-center w-full">
       {/* ── Navigation ── */}
       <Navbar />
 
@@ -19,7 +19,7 @@ export default function Home() {
             {/* Availability badge */}
             <AvailabilityBadge />
             {/* Heading */}
-            <h1 className="font-[family-name:var(--font-instrument-serif)] text-[48px] md:text-[64px] lg:text-[96px] text-black tracking-[-1.92px] leading-[52px] md:leading-[68px] lg:leading-[99px] max-w-[1023px]">
+            <h1 className="font-[family-name:var(--font-instrument-serif)] text-[48px] md:text-[64px] lg:text-[96px] theme-text tracking-[-1.92px] leading-[52px] md:leading-[68px] lg:leading-[99px] max-w-[1023px]">
               AI design engineer partner with focus on{" "}
               <em className="italic text-primary">design experiences</em>
             </h1>
@@ -41,14 +41,14 @@ export default function Home() {
         <div className="flex flex-col gap-[48px] md:gap-[72px] lg:gap-[96px] items-start max-w-[1280px] w-full py-[60px] md:py-[80px] lg:py-[120px] px-[20px] lg:px-0">
           <div className="flex flex-col gap-[24px] items-start">
             {/* Badge */}
-            <div className="bg-white border border-[#eaecee] flex gap-[8px] h-[45px] items-center overflow-hidden pl-[12px] pr-[20px] py-[12px] rounded-[32px]">
+            <div className="bg-white border theme-border flex gap-[8px] h-[45px] items-center overflow-hidden pl-[12px] pr-[20px] py-[12px] rounded-[32px]">
               <div className="bg-primary rounded-full w-[16px] h-[16px]" />
-              <span className="font-[family-name:var(--font-geist)] text-[16px] text-black tracking-[-0.32px] whitespace-nowrap">
+              <span className="font-[family-name:var(--font-geist)] text-[16px] theme-text tracking-[-0.32px] whitespace-nowrap">
                 Hello I am Thrihash
               </span>
             </div>
             {/* Heading */}
-            <h2 className="font-[family-name:var(--font-instrument-serif)] text-[48px] md:text-[64px] lg:text-[96px] text-black tracking-[-1.92px] leading-[52px] md:leading-[68px] lg:leading-[99px] max-w-[955px]">
+            <h2 className="font-[family-name:var(--font-instrument-serif)] text-[48px] md:text-[64px] lg:text-[96px] theme-text tracking-[-1.92px] leading-[52px] md:leading-[68px] lg:leading-[99px] max-w-[955px]">
               I help{" "}
               <em className="italic text-primary">
                 Startups, Business &amp; Brands
@@ -114,7 +114,7 @@ export default function Home() {
                       width={38}
                       height={38}
                     />
-                    <p className="font-[family-name:var(--font-geist)] font-semibold text-[20px] text-black tracking-[-0.4px] text-center">
+                    <p className="font-[family-name:var(--font-geist)] font-semibold text-[20px] theme-text tracking-[-0.4px] text-center">
                       Framer
                       <br />
                       Development
@@ -129,7 +129,7 @@ export default function Home() {
                       width={38}
                       height={38}
                     />
-                    <p className="font-[family-name:var(--font-geist)] font-semibold text-[20px] text-black tracking-[-0.4px] text-center">
+                    <p className="font-[family-name:var(--font-geist)] font-semibold text-[20px] theme-text tracking-[-0.4px] text-center">
                       AI &amp;
                       <br />
                       Automations
@@ -166,7 +166,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="flex flex-col items-start pb-[32px] px-[32px] w-full">
-                  <p className="font-[family-name:var(--font-geist)] font-semibold text-[20px] text-black tracking-[-0.4px] text-center w-full">
+                  <p className="font-[family-name:var(--font-geist)] font-semibold text-[20px] theme-text tracking-[-0.4px] text-center w-full">
                     Product design
                   </p>
                 </div>
@@ -182,13 +182,13 @@ export default function Home() {
       <section id="works" className="flex flex-col items-center w-full">
         <div className="flex flex-col gap-[48px] md:gap-[72px] lg:gap-[96px] items-start max-w-[1280px] w-full py-[60px] md:py-[80px] lg:py-[120px] px-[20px] lg:px-0">
           <div className="flex flex-col gap-[24px] items-start">
-            <div className="bg-white border border-[#eaecee] flex gap-[8px] h-[45px] items-center overflow-hidden pl-[12px] pr-[20px] py-[12px] rounded-[32px]">
+            <div className="bg-white border theme-border flex gap-[8px] h-[45px] items-center overflow-hidden pl-[12px] pr-[20px] py-[12px] rounded-[32px]">
               <div className="bg-primary rounded-full w-[16px] h-[16px]" />
-              <span className="font-[family-name:var(--font-geist)] text-[16px] text-black tracking-[-0.32px] whitespace-nowrap">
+              <span className="font-[family-name:var(--font-geist)] text-[16px] theme-text tracking-[-0.32px] whitespace-nowrap">
                 See my works
               </span>
             </div>
-            <h2 className="font-[family-name:var(--font-instrument-serif)] text-[48px] md:text-[64px] lg:text-[96px] text-black tracking-[-1.92px] leading-[52px] md:leading-[68px] lg:leading-[99px] max-w-[872px]">
+            <h2 className="font-[family-name:var(--font-instrument-serif)] text-[48px] md:text-[64px] lg:text-[96px] theme-text tracking-[-1.92px] leading-[52px] md:leading-[68px] lg:leading-[99px] max-w-[872px]">
               Some of <em className="italic text-primary">my projects</em> build
               for my clients
             </h2>
@@ -204,10 +204,10 @@ export default function Home() {
             {[1, 2, 3, 4].map((project) => (
               <div
                 key={project}
-                className="bg-[#eee] flex h-[350px] md:h-[450px] lg:h-[581px] items-end overflow-hidden p-[4px] rounded-[36px]"
+                className="theme-bg-card flex h-[350px] md:h-[450px] lg:h-[581px] items-end overflow-hidden p-[4px] rounded-[36px]"
               >
                 <div className="bg-white flex flex-1 items-center justify-between px-[20px] py-[24px] rounded-[44px]">
-                  <span className="font-[family-name:var(--font-geist)] text-[16px] text-black tracking-[-0.32px]">
+                  <span className="font-[family-name:var(--font-geist)] text-[16px] theme-text tracking-[-0.32px]">
                     View Casestudy
                   </span>
                   <Image
@@ -253,7 +253,7 @@ function ServiceCard({
         </div>
       </div>
       <div className="flex flex-col items-start p-[32px] w-full">
-        <p className="font-[family-name:var(--font-geist)] font-semibold text-[20px] text-black tracking-[-0.4px] text-center w-full">
+        <p className="font-[family-name:var(--font-geist)] font-semibold text-[20px] theme-text tracking-[-0.4px] text-center w-full">
           {title}
         </p>
       </div>

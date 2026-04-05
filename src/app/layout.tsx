@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import { Manrope } from "next/font/google";
 import PageReveal from "./components/PageReveal";
 import TransitionProvider from "./components/TransitionProvider";
+import ThemeProvider from "./components/ThemeProvider";
 import "./globals.css";
 
 const geist = Geist({
@@ -46,11 +47,14 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geist.variable} ${instrumentSerif.variable} ${inter.variable} ${manrope.variable} antialiased`}
+      suppressHydrationWarning
     >
       <body>
-          <TransitionProvider>
-            <PageReveal>{children}</PageReveal>
-          </TransitionProvider>
+          <ThemeProvider>
+            <TransitionProvider>
+              <PageReveal>{children}</PageReveal>
+            </TransitionProvider>
+          </ThemeProvider>
         </body>
     </html>
   );

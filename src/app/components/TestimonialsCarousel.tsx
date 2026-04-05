@@ -72,13 +72,13 @@ export default function TestimonialsCarousel({
         {allCards.map((t, i) => (
           <div
             key={i}
-            className="bg-[#fafafa] flex flex-col h-[350px] md:h-[380px] lg:h-[420px] items-start justify-between overflow-hidden p-[24px] md:p-[28px] lg:p-[32px] rounded-[24px] shrink-0"
+            className="theme-bg-secondary flex flex-col h-[350px] md:h-[380px] lg:h-[420px] items-start justify-between overflow-hidden p-[24px] md:p-[28px] lg:p-[32px] rounded-[24px] shrink-0"
             style={{ width: `${cardWidth}px` }}
           >
             <p className="font-[family-name:var(--font-geist)] font-semibold text-[18px] text-black/30 tracking-[-0.36px]">
               {t.company}
             </p>
-            <p className="font-[family-name:var(--font-geist)] text-[14px] md:text-[15px] lg:text-[16px] text-[#5e5e5e] tracking-[-0.32px] leading-normal">
+            <p className="font-[family-name:var(--font-geist)] text-[14px] md:text-[15px] lg:text-[16px] theme-text-secondary tracking-[-0.32px] leading-normal">
               {t.quote}
             </p>
             <div className="flex gap-[12px] items-center">
@@ -90,10 +90,10 @@ export default function TestimonialsCarousel({
                 className="rounded-full object-cover"
               />
               <div className="flex flex-col leading-normal">
-                <span className="font-[family-name:var(--font-geist)] font-semibold text-[16px] text-black tracking-[-0.32px]">
+                <span className="font-[family-name:var(--font-geist)] font-semibold text-[16px] theme-text tracking-[-0.32px]">
                   {t.name}
                 </span>
-                <span className="font-[family-name:var(--font-geist)] text-[14px] text-[#7c7c7c] tracking-[-0.28px]">
+                <span className="font-[family-name:var(--font-geist)] text-[14px] theme-text-muted tracking-[-0.28px]">
                   {t.role}
                 </span>
               </div>

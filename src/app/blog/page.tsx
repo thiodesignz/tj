@@ -104,7 +104,7 @@ const posts = [
 
 function CategoryTag({ label }: { label: string }) {
   return (
-    <span className="font-[family-name:var(--font-geist)] text-[13px] text-black/60 tracking-[-0.26px] border border-[#eaecee] rounded-full px-[12px] py-[4px] whitespace-nowrap">
+    <span className="font-[family-name:var(--font-geist)] text-[13px] text-black/60 tracking-[-0.26px] border theme-border rounded-full px-[12px] py-[4px] whitespace-nowrap">
       {label}
     </span>
   );
@@ -128,11 +128,11 @@ function AuthorRow({
         height={24}
         className="rounded-full object-cover w-[24px] h-[24px]"
       />
-      <span className="font-[family-name:var(--font-geist)] font-medium text-[13px] text-black tracking-[-0.26px]">
+      <span className="font-[family-name:var(--font-geist)] font-medium text-[13px] theme-text tracking-[-0.26px]">
         {author}
       </span>
       <span className="text-black/30">·</span>
-      <span className="font-[family-name:var(--font-geist)] text-[13px] text-black/40 tracking-[-0.26px]">
+      <span className="font-[family-name:var(--font-geist)] text-[13px] theme-text-faint tracking-[-0.26px]">
         {date}
       </span>
       <span className="text-black/30">·</span>
@@ -149,20 +149,20 @@ export default async function BlogPage() {
   const grid = posts.slice(3);
 
   return (
-    <div className="bg-white flex flex-col items-center w-full">
+    <div className="theme-bg flex flex-col items-center w-full">
       <Navbar active="Blog" />
 
       <section className="flex flex-col items-center w-full">
         <div className="flex flex-col gap-[40px] md:gap-[52px] lg:gap-[64px] items-start max-w-[1280px] w-full py-[60px] md:py-[80px] lg:py-[120px] px-[20px] lg:px-0">
           {/* Heading */}
           <div className="flex flex-col gap-[24px] items-start">
-            <div className="bg-white border border-[#eaecee] flex gap-[8px] h-[45px] items-center overflow-hidden pl-[12px] pr-[20px] py-[12px] rounded-[32px]">
+            <div className="theme-bg border theme-border flex gap-[8px] h-[45px] items-center overflow-hidden pl-[12px] pr-[20px] py-[12px] rounded-[32px]">
               <div className="bg-primary rounded-full w-[16px] h-[16px]" />
-              <span className="font-[family-name:var(--font-geist)] text-[16px] text-black tracking-[-0.32px] whitespace-nowrap">
+              <span className="font-[family-name:var(--font-geist)] text-[16px] theme-text tracking-[-0.32px] whitespace-nowrap">
                 Blog
               </span>
             </div>
-            <h1 className="font-[family-name:var(--font-instrument-serif)] text-[48px] md:text-[64px] lg:text-[96px] text-black tracking-[-1.92px] leading-[52px] md:leading-[68px] lg:leading-[99px] max-w-[872px]">
+            <h1 className="font-[family-name:var(--font-instrument-serif)] text-[48px] md:text-[64px] lg:text-[96px] theme-text tracking-[-1.92px] leading-[52px] md:leading-[68px] lg:leading-[99px] max-w-[872px]">
               Thoughts, <em className="italic text-primary">ideas </em> &amp;
               learnings.
             </h1>
@@ -176,7 +176,7 @@ export default async function BlogPage() {
                 className={`font-[family-name:var(--font-geist)] text-[14px] tracking-[-0.28px] border rounded-full px-[16px] py-[8px] whitespace-nowrap transition-colors ${
                   i === 0
                     ? "bg-primary text-white border-primary"
-                    : "bg-white text-black border-[#eaecee] hover:border-black/20"
+                    : "theme-bg theme-text theme-border hover:border-black/20"
                 }`}
               >
                 {cat}
@@ -188,7 +188,7 @@ export default async function BlogPage() {
           {featured && <div className="flex flex-col lg:flex-row gap-[24px] w-full">
             {/* Left — Featured post */}
             <div className="flex flex-col gap-[16px] flex-1 min-w-0 cursor-pointer group">
-              <div className="bg-[#eee] rounded-[16px] w-full h-[220px] md:h-[280px] lg:h-[320px] overflow-hidden shrink-0">
+              <div className="theme-bg-card rounded-[16px] w-full h-[220px] md:h-[280px] lg:h-[320px] overflow-hidden shrink-0">
                 {featured.coverImage && (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={featured.coverImage} alt="" className="w-full h-full object-cover" />
@@ -199,10 +199,10 @@ export default async function BlogPage() {
                 date={featured.createdAt ? new Date(featured.createdAt).toLocaleDateString() : ""}
                 category={featured.category || ""}
               />
-              <h2 className="font-[family-name:var(--font-geist)] font-semibold text-[22px] text-black tracking-[-0.44px] leading-[28px] group-hover:text-primary transition-colors">
+              <h2 className="font-[family-name:var(--font-geist)] font-semibold text-[22px] theme-text tracking-[-0.44px] leading-[28px] group-hover:text-primary transition-colors">
                 {featured.title}
               </h2>
-              <p className="font-[family-name:var(--font-geist)] text-[15px] text-[#5e5e5e] tracking-[-0.3px] leading-[22px]">
+              <p className="font-[family-name:var(--font-geist)] text-[15px] theme-text-secondary tracking-[-0.3px] leading-[22px]">
                 {featured.excerpt}
               </p>
             </div>
@@ -211,7 +211,7 @@ export default async function BlogPage() {
             <div className="flex flex-col gap-[24px] flex-1 min-w-0">
               {/* Top right */}
               {sideTop && <div className="flex gap-[16px] cursor-pointer group">
-                <div className="bg-[#eee] rounded-[16px] w-[160px] md:w-[200px] lg:w-[240px] h-[120px] md:h-[140px] lg:h-[160px] overflow-hidden shrink-0">
+                <div className="theme-bg-card rounded-[16px] w-[160px] md:w-[200px] lg:w-[240px] h-[120px] md:h-[140px] lg:h-[160px] overflow-hidden shrink-0">
                   {sideTop.coverImage && (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img src={sideTop.coverImage} alt="" className="w-full h-full object-cover" />
@@ -223,17 +223,17 @@ export default async function BlogPage() {
                     date={sideTop.createdAt ? new Date(sideTop.createdAt).toLocaleDateString() : ""}
                     category={sideTop.category || ""}
                   />
-                  <h3 className="font-[family-name:var(--font-geist)] font-semibold text-[17px] text-black tracking-[-0.34px] leading-[22px] group-hover:text-primary transition-colors">
+                  <h3 className="font-[family-name:var(--font-geist)] font-semibold text-[17px] theme-text tracking-[-0.34px] leading-[22px] group-hover:text-primary transition-colors">
                     {sideTop.title}
                   </h3>
-                  <p className="font-[family-name:var(--font-geist)] text-[14px] text-[#5e5e5e] tracking-[-0.28px] leading-[20px] line-clamp-3">
+                  <p className="font-[family-name:var(--font-geist)] text-[14px] theme-text-secondary tracking-[-0.28px] leading-[20px] line-clamp-3">
                     {sideTop.excerpt}
                   </p>
                 </div>
               </div>}
               {/* Bottom right */}
               {sideBottom && <div className="flex gap-[16px] cursor-pointer group">
-                <div className="bg-[#eee] rounded-[16px] w-[160px] md:w-[200px] lg:w-[240px] h-[120px] md:h-[140px] lg:h-[160px] overflow-hidden shrink-0">
+                <div className="theme-bg-card rounded-[16px] w-[160px] md:w-[200px] lg:w-[240px] h-[120px] md:h-[140px] lg:h-[160px] overflow-hidden shrink-0">
                   {sideBottom.coverImage && (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img src={sideBottom.coverImage} alt="" className="w-full h-full object-cover" />
@@ -245,10 +245,10 @@ export default async function BlogPage() {
                     date={sideBottom.createdAt ? new Date(sideBottom.createdAt).toLocaleDateString() : ""}
                     category={sideBottom.category || ""}
                   />
-                  <h3 className="font-[family-name:var(--font-geist)] font-semibold text-[17px] text-black tracking-[-0.34px] leading-[22px] group-hover:text-primary transition-colors">
+                  <h3 className="font-[family-name:var(--font-geist)] font-semibold text-[17px] theme-text tracking-[-0.34px] leading-[22px] group-hover:text-primary transition-colors">
                     {sideBottom.title}
                   </h3>
-                  <p className="font-[family-name:var(--font-geist)] text-[14px] text-[#5e5e5e] tracking-[-0.28px] leading-[20px] line-clamp-3">
+                  <p className="font-[family-name:var(--font-geist)] text-[14px] theme-text-secondary tracking-[-0.28px] leading-[20px] line-clamp-3">
                     {sideBottom.excerpt}
                   </p>
                 </div>
@@ -263,7 +263,7 @@ export default async function BlogPage() {
                 key={post.id}
                 className="flex flex-col gap-[16px] cursor-pointer group"
               >
-                <div className="bg-[#eee] rounded-[16px] w-full h-[180px] md:h-[200px] lg:h-[220px] overflow-hidden">
+                <div className="theme-bg-card rounded-[16px] w-full h-[180px] md:h-[200px] lg:h-[220px] overflow-hidden">
                   {post.coverImage && (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img src={post.coverImage} alt="" className="w-full h-full object-cover" />
@@ -274,10 +274,10 @@ export default async function BlogPage() {
                   date={post.createdAt ? new Date(post.createdAt).toLocaleDateString() : ""}
                   category={post.category || ""}
                 />
-                <h3 className="font-[family-name:var(--font-geist)] font-semibold text-[17px] text-black tracking-[-0.34px] leading-[22px] group-hover:text-primary transition-colors">
+                <h3 className="font-[family-name:var(--font-geist)] font-semibold text-[17px] theme-text tracking-[-0.34px] leading-[22px] group-hover:text-primary transition-colors">
                   {post.title}
                 </h3>
-                <p className="font-[family-name:var(--font-geist)] text-[14px] text-[#5e5e5e] tracking-[-0.28px] leading-[20px] line-clamp-2">
+                <p className="font-[family-name:var(--font-geist)] text-[14px] theme-text-secondary tracking-[-0.28px] leading-[20px] line-clamp-2">
                   {post.excerpt}
                 </p>
               </article>

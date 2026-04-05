@@ -52,9 +52,9 @@ export default function AvailabilityBadge() {
   }, []);
 
   return (
-    <div className="bg-white border border-[#eaecee] flex gap-[8px] h-[45px] items-center overflow-hidden pl-[12px] pr-[20px] py-[12px] rounded-[32px] w-fit">
+    <div className="theme-bg border theme-border flex gap-[8px] h-[45px] items-center overflow-hidden pl-[12px] pr-[20px] py-[12px] rounded-[32px] w-fit">
       <div className="bg-[#20d200] rounded-full w-[16px] h-[16px] shrink-0 animate-[pulse_2s_ease-in-out_infinite]" />
-      <span className="font-[family-name:var(--font-geist)] text-[16px] text-black tracking-[-0.32px] whitespace-nowrap flex items-center">
+      <span className="font-[family-name:var(--font-geist)] text-[16px] theme-text tracking-[-0.32px] whitespace-nowrap flex items-center">
         Available for
         <span
           className="inline-block h-[24px] overflow-hidden relative ml-[5px] transition-[width] duration-300 ease-in-out"
