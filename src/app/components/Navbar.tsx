@@ -37,8 +37,8 @@ export default function Navbar({ active }: { active?: string }) {
                 href={link.href}
                 className={`hover:opacity-70 transition-opacity ${
                   active === link.label
-                    ? "text-black font-semibold"
-                    : "text-black/40"
+                    ? "theme-text font-semibold"
+                    : "theme-text-faint"
                 }`}
               >
                 {link.label}
@@ -110,10 +110,10 @@ export default function Navbar({ active }: { active?: string }) {
               <TransitionLink
                 key={link.label}
                 href={link.href}
-                className={`font-[family-name:var(--font-geist)] text-[16px] tracking-[-0.32px] py-[12px] px-[12px] rounded-[12px] hover:bg-black/5 transition-colors ${
+                className={`font-[family-name:var(--font-geist)] text-[16px] tracking-[-0.32px] py-[12px] px-[12px] rounded-[12px] hover:opacity-70 transition-colors ${
                   active === link.label
-                    ? "text-black font-semibold"
-                    : "text-black/40"
+                    ? "theme-text font-semibold"
+                    : "theme-text-faint"
                 }`}
                 onClick={() => setMenuOpen(false)}
               >
