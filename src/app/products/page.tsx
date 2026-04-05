@@ -15,7 +15,7 @@ export default async function ProductsPage() {
       <Navbar active="Products" />
 
       <section className="flex flex-col items-center w-full">
-        <div className="flex flex-col gap-[96px] items-start max-w-[1280px] w-full py-[120px]">
+        <div className="flex flex-col gap-[48px] md:gap-[72px] lg:gap-[96px] items-start max-w-[1280px] w-full py-[60px] md:py-[80px] lg:py-[120px] px-[20px] lg:px-0">
           <div className="flex flex-col gap-[24px] items-start">
             <div className="bg-white border border-[#eaecee] flex gap-[8px] h-[45px] items-center overflow-hidden pl-[12px] pr-[20px] py-[12px] rounded-[32px]">
               <div className="bg-primary rounded-full w-[16px] h-[16px]" />
@@ -23,21 +23,21 @@ export default async function ProductsPage() {
                 My products
               </span>
             </div>
-            <h1 className="font-[family-name:var(--font-instrument-serif)] text-[96px] text-black tracking-[-1.92px] leading-[99px] max-w-[872px]">
+            <h1 className="font-[family-name:var(--font-instrument-serif)] text-[48px] md:text-[64px] lg:text-[96px] text-black tracking-[-1.92px] leading-[52px] md:leading-[68px] lg:leading-[99px] max-w-[872px]">
               Products I{" "}
               <em className="italic text-primary">built &amp; shipped</em> for
               the community.
             </h1>
           </div>
 
-          <div className="grid grid-cols-2 gap-[12px] w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-[12px] w-full">
             {items.map((product) => (
               <a
                 key={product.id}
                 href={product.liveUrl || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#eee] flex h-[581px] items-end overflow-hidden p-[4px] rounded-[36px] relative group"
+                className="bg-[#eee] flex h-[350px] md:h-[450px] lg:h-[581px] items-end overflow-hidden p-[4px] rounded-[36px] relative group"
               >
                 {product.image && (
                   // eslint-disable-next-line @next/next/no-img-element

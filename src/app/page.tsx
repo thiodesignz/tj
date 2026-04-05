@@ -14,12 +14,12 @@ export default function Home() {
 
       {/* ── Hero Section ── */}
       <section className="flex flex-col items-center w-full overflow-hidden">
-        <div className="flex flex-col items-start max-w-[1280px] w-full pt-[120px]">
+        <div className="flex flex-col items-start max-w-[1280px] w-full pt-[60px] md:pt-[80px] lg:pt-[120px] px-[20px] lg:px-0">
           <div className="flex flex-col gap-[24px] items-start max-w-[1106px]">
             {/* Availability badge */}
             <AvailabilityBadge />
             {/* Heading */}
-            <h1 className="font-[family-name:var(--font-instrument-serif)] text-[96px] text-black tracking-[-1.92px] leading-[99px] max-w-[1023px]">
+            <h1 className="font-[family-name:var(--font-instrument-serif)] text-[48px] md:text-[64px] lg:text-[96px] text-black tracking-[-1.92px] leading-[52px] md:leading-[68px] lg:leading-[99px] max-w-[1023px]">
               AI design engineer partner with focus on{" "}
               <em className="italic text-primary">design experiences</em>
             </h1>
@@ -38,7 +38,7 @@ export default function Home() {
 
       {/* ── About Section ── */}
       <section className="flex flex-col items-center w-full">
-        <div className="flex flex-col gap-[96px] items-start max-w-[1280px] w-full py-[120px]">
+        <div className="flex flex-col gap-[48px] md:gap-[72px] lg:gap-[96px] items-start max-w-[1280px] w-full py-[60px] md:py-[80px] lg:py-[120px] px-[20px] lg:px-0">
           <div className="flex flex-col gap-[24px] items-start">
             {/* Badge */}
             <div className="bg-white border border-[#eaecee] flex gap-[8px] h-[45px] items-center overflow-hidden pl-[12px] pr-[20px] py-[12px] rounded-[32px]">
@@ -48,7 +48,7 @@ export default function Home() {
               </span>
             </div>
             {/* Heading */}
-            <h2 className="font-[family-name:var(--font-instrument-serif)] text-[96px] text-black tracking-[-1.92px] leading-[99px] max-w-[955px]">
+            <h2 className="font-[family-name:var(--font-instrument-serif)] text-[48px] md:text-[64px] lg:text-[96px] text-black tracking-[-1.92px] leading-[52px] md:leading-[68px] lg:leading-[99px] max-w-[955px]">
               I help{" "}
               <em className="italic text-primary">
                 Startups, Business &amp; Brands
@@ -91,22 +91,22 @@ export default function Home() {
 
       {/* ── Services Section ── */}
       <section className="bg-primary flex flex-col items-center w-full">
-        <div className="flex flex-col gap-[96px] items-start max-w-[1280px] w-full py-[120px]">
-          <h2 className="font-[family-name:var(--font-instrument-serif)] text-[96px] text-white tracking-[-1.92px] leading-[99px] max-w-[955px]">
+        <div className="flex flex-col gap-[48px] md:gap-[72px] lg:gap-[96px] items-start max-w-[1280px] w-full py-[60px] md:py-[80px] lg:py-[120px] px-[20px] lg:px-0">
+          <h2 className="font-[family-name:var(--font-instrument-serif)] text-[48px] md:text-[64px] lg:text-[96px] text-white tracking-[-1.92px] leading-[52px] md:leading-[68px] lg:leading-[99px] max-w-[955px]">
             What Services i do !
           </h2>
           {/* Services grid */}
-          <div className="flex gap-[12px] h-[720px] items-center w-full">
+          <div className="flex flex-col md:flex-row gap-[12px] md:h-[720px] items-center w-full">
             {/* Left column */}
-            <div className="flex flex-col gap-[12px] flex-1 h-full min-w-0">
+            <div className="flex flex-col gap-[12px] flex-1 w-full md:h-full min-w-0">
               <ServiceCard title="Branding/Logo design" />
               <ServiceCard title="Visual & Promotional Design" />
             </div>
             {/* Right column */}
-            <div className="flex flex-col gap-[12px] flex-1 h-full min-w-0">
+            <div className="flex flex-col gap-[12px] flex-1 w-full md:h-full min-w-0">
               {/* Top row: Framer + AI */}
-              <div className="flex gap-[12px] flex-1 min-h-0">
-                <div className="bg-white flex flex-1 items-center justify-center overflow-hidden p-[32px] rounded-[20px] min-w-0">
+              <div className="flex gap-[12px] flex-1 min-h-[160px] md:min-h-0">
+                <div className="bg-white flex flex-1 items-center justify-center overflow-hidden p-[24px] md:p-[32px] rounded-[20px] min-w-0">
                   <div className="flex flex-col gap-[24px] items-center">
                     <Image
                       src="/assets/slack.svg"
@@ -121,7 +121,7 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
-                <div className="bg-white flex flex-1 items-center justify-center overflow-hidden p-[32px] rounded-[20px] min-w-0">
+                <div className="bg-white flex flex-1 items-center justify-center overflow-hidden p-[24px] md:p-[32px] rounded-[20px] min-w-0">
                   <div className="flex flex-col gap-[24px] items-center">
                     <Image
                       src="/assets/slack.svg"
@@ -180,7 +180,7 @@ export default function Home() {
 
       {/* ── Projects Section ── */}
       <section id="works" className="flex flex-col items-center w-full">
-        <div className="flex flex-col gap-[96px] items-start max-w-[1280px] w-full py-[120px]">
+        <div className="flex flex-col gap-[48px] md:gap-[72px] lg:gap-[96px] items-start max-w-[1280px] w-full py-[60px] md:py-[80px] lg:py-[120px] px-[20px] lg:px-0">
           <div className="flex flex-col gap-[24px] items-start">
             <div className="bg-white border border-[#eaecee] flex gap-[8px] h-[45px] items-center overflow-hidden pl-[12px] pr-[20px] py-[12px] rounded-[32px]">
               <div className="bg-primary rounded-full w-[16px] h-[16px]" />
@@ -188,7 +188,7 @@ export default function Home() {
                 See my works
               </span>
             </div>
-            <h2 className="font-[family-name:var(--font-instrument-serif)] text-[96px] text-black tracking-[-1.92px] leading-[99px] max-w-[872px]">
+            <h2 className="font-[family-name:var(--font-instrument-serif)] text-[48px] md:text-[64px] lg:text-[96px] text-black tracking-[-1.92px] leading-[52px] md:leading-[68px] lg:leading-[99px] max-w-[872px]">
               Some of <em className="italic text-primary">my projects</em> build
               for my clients
             </h2>
@@ -200,11 +200,11 @@ export default function Home() {
             </TransitionLink>
           </div>
           {/* Project cards grid */}
-          <div className="grid grid-cols-2 gap-[12px] w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-[12px] w-full">
             {[1, 2, 3, 4].map((project) => (
               <div
                 key={project}
-                className="bg-[#eee] flex h-[581px] items-end overflow-hidden p-[4px] rounded-[36px]"
+                className="bg-[#eee] flex h-[350px] md:h-[450px] lg:h-[581px] items-end overflow-hidden p-[4px] rounded-[36px]"
               >
                 <div className="bg-white flex flex-1 items-center justify-between px-[20px] py-[24px] rounded-[44px]">
                   <span className="font-[family-name:var(--font-geist)] text-[16px] text-black tracking-[-0.32px]">
@@ -242,7 +242,7 @@ function ServiceCard({
 }) {
   return (
     <div
-      className="bg-white flex flex-col flex-1 items-start overflow-hidden rounded-[20px] min-h-0"
+      className="bg-white flex flex-col flex-1 items-start overflow-hidden rounded-[20px] min-h-[200px] md:min-h-0"
       style={height ? { height, flex: "none" } : undefined}
     >
       <div className="bg-[#eaeaea] flex-1 overflow-hidden relative w-full min-h-0">
@@ -260,4 +260,3 @@ function ServiceCard({
     </div>
   );
 }
-

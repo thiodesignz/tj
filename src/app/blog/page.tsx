@@ -120,7 +120,7 @@ function AuthorRow({
   category: string;
 }) {
   return (
-    <div className="flex items-center gap-[8px]">
+    <div className="flex items-center gap-[8px] flex-wrap">
       <Image
         src="/assets/thrihash.jpg"
         alt={author}
@@ -153,7 +153,7 @@ export default async function BlogPage() {
       <Navbar active="Blog" />
 
       <section className="flex flex-col items-center w-full">
-        <div className="flex flex-col gap-[64px] items-start max-w-[1280px] w-full py-[120px]">
+        <div className="flex flex-col gap-[40px] md:gap-[52px] lg:gap-[64px] items-start max-w-[1280px] w-full py-[60px] md:py-[80px] lg:py-[120px] px-[20px] lg:px-0">
           {/* Heading */}
           <div className="flex flex-col gap-[24px] items-start">
             <div className="bg-white border border-[#eaecee] flex gap-[8px] h-[45px] items-center overflow-hidden pl-[12px] pr-[20px] py-[12px] rounded-[32px]">
@@ -162,7 +162,7 @@ export default async function BlogPage() {
                 Blog
               </span>
             </div>
-            <h1 className="font-[family-name:var(--font-instrument-serif)] text-[96px] text-black tracking-[-1.92px] leading-[99px] max-w-[872px]">
+            <h1 className="font-[family-name:var(--font-instrument-serif)] text-[48px] md:text-[64px] lg:text-[96px] text-black tracking-[-1.92px] leading-[52px] md:leading-[68px] lg:leading-[99px] max-w-[872px]">
               Thoughts, <em className="italic text-primary">ideas </em> &amp;
               learnings.
             </h1>
@@ -185,10 +185,10 @@ export default async function BlogPage() {
           </div>
 
           {/* Featured / Bento layout */}
-          {featured && <div className="flex gap-[24px] w-full">
+          {featured && <div className="flex flex-col lg:flex-row gap-[24px] w-full">
             {/* Left — Featured post */}
             <div className="flex flex-col gap-[16px] flex-1 min-w-0 cursor-pointer group">
-              <div className="bg-[#eee] rounded-[16px] w-full h-[320px] overflow-hidden shrink-0">
+              <div className="bg-[#eee] rounded-[16px] w-full h-[220px] md:h-[280px] lg:h-[320px] overflow-hidden shrink-0">
                 {featured.coverImage && (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={featured.coverImage} alt="" className="w-full h-full object-cover" />
@@ -211,7 +211,7 @@ export default async function BlogPage() {
             <div className="flex flex-col gap-[24px] flex-1 min-w-0">
               {/* Top right */}
               {sideTop && <div className="flex gap-[16px] cursor-pointer group">
-                <div className="bg-[#eee] rounded-[16px] w-[240px] h-[160px] overflow-hidden shrink-0">
+                <div className="bg-[#eee] rounded-[16px] w-[160px] md:w-[200px] lg:w-[240px] h-[120px] md:h-[140px] lg:h-[160px] overflow-hidden shrink-0">
                   {sideTop.coverImage && (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img src={sideTop.coverImage} alt="" className="w-full h-full object-cover" />
@@ -233,7 +233,7 @@ export default async function BlogPage() {
               </div>}
               {/* Bottom right */}
               {sideBottom && <div className="flex gap-[16px] cursor-pointer group">
-                <div className="bg-[#eee] rounded-[16px] w-[240px] h-[160px] overflow-hidden shrink-0">
+                <div className="bg-[#eee] rounded-[16px] w-[160px] md:w-[200px] lg:w-[240px] h-[120px] md:h-[140px] lg:h-[160px] overflow-hidden shrink-0">
                   {sideBottom.coverImage && (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img src={sideBottom.coverImage} alt="" className="w-full h-full object-cover" />
@@ -256,14 +256,14 @@ export default async function BlogPage() {
             </div>
           </div>}
 
-          {/* Grid — 3 columns */}
-          <div className="grid grid-cols-3 gap-[24px] w-full">
+          {/* Grid — responsive columns */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px] w-full">
             {grid.map((post) => (
               <article
                 key={post.id}
                 className="flex flex-col gap-[16px] cursor-pointer group"
               >
-                <div className="bg-[#eee] rounded-[16px] w-full h-[220px] overflow-hidden">
+                <div className="bg-[#eee] rounded-[16px] w-full h-[180px] md:h-[200px] lg:h-[220px] overflow-hidden">
                   {post.coverImage && (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img src={post.coverImage} alt="" className="w-full h-full object-cover" />

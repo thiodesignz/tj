@@ -47,9 +47,9 @@ const testimonials = [
 export default function TestimonialsSection() {
   return (
     <section className="flex flex-col items-center w-full overflow-hidden">
-      <div className="flex flex-col gap-[96px] items-center max-w-[1280px] w-full py-[120px]">
+      <div className="flex flex-col gap-[48px] md:gap-[72px] lg:gap-[96px] items-center max-w-[1280px] w-full py-[60px] md:py-[80px] lg:py-[120px] px-[20px] lg:px-0">
         {/* Header */}
-        <div className="flex items-end justify-between w-full">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between w-full gap-[24px] md:gap-0">
           <div className="flex flex-col gap-[24px] items-start">
             <div className="bg-white border border-[#eaecee] flex gap-[8px] h-[45px] items-center overflow-hidden pl-[12px] pr-[20px] py-[12px] rounded-[32px]">
               <div className="bg-primary rounded-full w-[16px] h-[16px]" />
@@ -57,14 +57,14 @@ export default function TestimonialsSection() {
                 Testimonials
               </span>
             </div>
-            <h2 className="font-[family-name:var(--font-instrument-serif)] text-[96px] text-black tracking-[-1.92px] leading-[99px] max-w-[872px]">
+            <h2 className="font-[family-name:var(--font-instrument-serif)] text-[48px] md:text-[64px] lg:text-[96px] text-black tracking-[-1.92px] leading-[52px] md:leading-[68px] lg:leading-[99px] max-w-[872px]">
               Words from my
               <br />
               lovely <em className="italic text-primary">clients</em>
             </h2>
           </div>
-          <div className="flex flex-col gap-[12px] items-end shrink-0">
-            <div className="font-[family-name:var(--font-geist)] text-[16px] text-right tracking-[-0.32px]">
+          <div className="flex flex-col gap-[12px] items-start md:items-end shrink-0">
+            <div className="font-[family-name:var(--font-geist)] text-[16px] text-left md:text-right tracking-[-0.32px]">
               <p className="text-black">Loved by those</p>
               <p className="text-black/40">who value thoughtful designs</p>
             </div>
